@@ -60,7 +60,53 @@ function NavBar() {
       ) : resize > 360 && resize <= 600 ? (
         <div className="nav-bar-tablet">
           <div className="logo-section-navbar ">logo</div>
-          <div className="link-section">
+          {/* <div className="link-section">
+            <li>
+              <a href="#">Home</a>
+            </li>
+            <li>
+              <a href="#">About Us</a>
+            </li>
+            <li>
+              <a href="#">Shop</a>
+            </li>
+            <li>
+              <a href="#">Contact Us</a>
+            </li>
+          </div> */}
+          <div className="btn-section-auth">
+            <VscThreeBars
+              onClick={() => setClick2((prev) => !prev)}
+              className={click2 ? `white` : `black`}
+            />
+            {click2 ? (
+              <div className="menu">
+                <div className="menu-items">
+                  <li>
+                    <a href="#">Home</a>
+                  </li>
+                  <li>
+                    <a href="#">About Us</a>
+                  </li>
+                  <li>
+                    <a href="#">Shop</a>
+                  </li>
+                  <li>
+                    <a href="#">Contact Us</a>
+                  </li>
+                </div>
+                <div className="menu-btn-2">
+                  <button>Sign up</button>
+                  <button>Log In </button>
+                </div>
+              </div>
+            ) : null}
+          </div>
+        </div>
+      ) : (
+        <div className="nav-bar-desktop">
+          <div className="logo-section-navbar-desktop ">logo</div>
+          <div className="link-section-desktop">
             <li>
               <a href="#">Home</a>
             </li>
@@ -74,24 +120,10 @@ function NavBar() {
               <a href="#">Contact Us</a>
             </li>
           </div>
-          <div className="btn-section-auth">
-            <VscThreeBars
-              onClick={() => setClick2((prev) => !prev)}
-              className={click2 ? `white` : `black`}
-            />
-            {click2 ? (
-              <div className="btn-menu">
-                <button>Sign Up</button>
-                <button>Log In </button>
-              </div>
-            ) : null}
+          <div className="btn-section-auth-desktop">
+            <button>Sign Up</button>
+            <button>Log In </button>
           </div>
-        </div>
-      ) : (
-        <div className="nav-bar-desktop">
-          <div className="logo-section-navbar "></div>
-          <div className="link-section"></div>
-          <div className="btn-section-auth"></div>
         </div>
       )}
     </div>
