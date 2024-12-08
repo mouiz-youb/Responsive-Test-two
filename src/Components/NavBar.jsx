@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "../App.css";
 import { useClick } from "../Store/useClick";
+// import { useClick2 } from "../Store/useClick2";
+import { useClick2 } from "../Store/useClick";
 import { VscThreeBars } from "react-icons/vsc";
 function NavBar() {
   const [resize, setResize] = useState(window.innerWidth);
   const click = useClick((state) => state.click);
   const setClick = useClick((state) => state.setClick);
+  const click2 = useClick2((state) => state.click2);
+  const setClick2 = useClick2((state) => state.setClick2);
   useEffect(() => {
     const handleResize = () => {
       setResize(window.innerWidth);
@@ -18,6 +22,7 @@ function NavBar() {
     };
   }, []);
   console.log(click);
+  console.log(click2);
   return (
     <div className="navbar-section">
       {resize <= 360 ? (
@@ -54,12 +59,40 @@ function NavBar() {
         </div>
       ) : resize > 360 && resize <= 600 ? (
         <div className="nav-bar-tablet">
+          <div className="logo-section-navbar ">logo</div>
+          <div className="link-section">
+            <li>
+              <a href="#">Home</a>
+            </li>
+            <li>
+              <a href="#">About Us</a>
+            </li>
+            <li>
+              <a href="#">Shop</a>
+            </li>
+            <li>
+              <a href="#">Contact Us</a>
+            </li>
+          </div>
+          <div className="btn-section-auth">
+            <VscThreeBars
+              onClick={() => setClick2((prev) => !prev)}
+              className={click2 ? `white` : `black`}
+            />
+            {click2 ? (
+              <div className="btn-menu">
+                <button>Sign Up</button>
+                <button>Log In </button>
+              </div>
+            ) : null}
+          </div>
+        </div>
+      ) : (
+        <div className="nav-bar-desktop">
           <div className="logo-section-navbar "></div>
           <div className="link-section"></div>
           <div className="btn-section-auth"></div>
         </div>
-      ) : (
-        <div className="nav-bar-desktop">big screen </div>
       )}
     </div>
   );
